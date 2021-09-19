@@ -7,16 +7,11 @@ object MusicClient {
     private val BASE_URL = "https://ws.audioscrobbler.com/2.0/"
     private var instance: Retrofit? = null;
 
-    fun service(): MusicService = getInstance().create(MusicService::class.java)
+    fun service(): MusicService = retrofit().create(MusicService::class.java)
 
-    private fun getInstance(): Retrofit {
-        if(instance == null){
-            instance = Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-            return instance!!
-        }
-        return instance!!
-    }
+    private fun retrofit(): Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
 }
