@@ -9,8 +9,7 @@ import com.example.retrofit.databinding.ItemItemBinding
 class MusicAdapter(val data: List<Track>) : RecyclerView.Adapter<MusicAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ItemItemBinding) : RecyclerView.ViewHolder(binding.root){
-        fun onBind(data: Track, position: Int){
-            binding.viewModel = data
+        fun onBind(position: Int){
             binding.numberText.text = (position+1).toString()
         }
     }
@@ -21,7 +20,7 @@ class MusicAdapter(val data: List<Track>) : RecyclerView.Adapter<MusicAdapter.Vi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(data[position] ,position)
+        holder.onBind(position)
     }
 
     override fun getItemCount(): Int = data.size
